@@ -1,0 +1,702 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Francisca Júlia | Parnasianismo Brasileiro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --preto: #10100e;
+            --painel: #1b1a16;
+            --dourado: #d6b778;
+            --branco: #f5eddf;
+            --cinza: #c4bba9;
+            --borda: rgba(214, 183, 120, 0.3);
+        }
+
+        body {
+            background: var(--preto);
+            color: var(--branco);
+            font-family: "Lora", Georgia, serif;
+            line-height: 1.8;
+        }
+
+        /* MENU */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+            padding: 18px;
+            background: rgba(16, 16, 14, 0.96);
+            border-bottom: 1px solid var(--borda);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--dourado);
+        }
+
+        /* CAPA */
+
+        header {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            background:
+                linear-gradient(rgba(10, 10, 8, 0.72), rgba(10, 10, 8, 0.96)),
+                url("https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1800&q=85");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .capa {
+            max-width: 900px;
+            animation: aparecer 1.2s ease;
+        }
+
+        .etiqueta {
+            color: var(--dourado);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        h1, h2, h3 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            line-height: 1.15;
+        }
+
+        h1 {
+            color: var(--dourado);
+            font-size: clamp(55px, 9vw, 110px);
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .subtitulo {
+            max-width: 700px;
+            margin: auto;
+            font-size: 17px;
+            color: #e0d7c7;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 28px;
+            border: 1px solid var(--dourado);
+            color: var(--dourado);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: var(--dourado);
+            color: var(--preto);
+            transform: translateY(-3px);
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            width: min(1000px, 90%);
+            margin: auto;
+        }
+
+        section {
+            padding: 90px 0;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .numero {
+            color: var(--dourado);
+            font-size: 12px;
+            letter-spacing: 4px;
+        }
+
+        h2 {
+            color: var(--dourado);
+            font-size: clamp(35px, 5vw, 55px);
+            margin: 15px 0 30px;
+        }
+
+        h3 {
+            color: var(--dourado);
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--cinza);
+            margin-bottom: 18px;
+        }
+
+        .destaque {
+            color: var(--branco);
+            font-size: 20px;
+        }
+
+        /* RETRATO */
+
+        .retrato-container {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .retrato {
+            display: block;
+            width: 230px;
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            margin: auto;
+            padding: 7px;
+            border: 2px solid var(--dourado);
+            border-radius: 5px;
+            background: var(--painel);
+        }
+
+        .legenda {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* CARTÕES */
+
+        .grade {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cartao {
+            padding: 30px;
+            background: var(--painel);
+            border: 1px solid var(--borda);
+            transition: 0.3s;
+        }
+
+        .cartao:hover {
+            transform: translateY(-5px);
+            border-color: var(--dourado);
+        }
+
+        .cartao p {
+            margin-bottom: 0;
+        }
+
+        /* CITAÇÃO */
+
+        .citacao {
+            margin: 35px 0;
+            padding: 25px 30px;
+            border-left: 3px solid var(--dourado);
+            background: var(--painel);
+            color: var(--branco);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 27px;
+        }
+
+        /* CORES */
+
+        .paleta {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .cor {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 1px solid var(--borda);
+        }
+
+        .cor1 { background: #d6b778; }
+        .cor2 { background: #10100e; }
+        .cor3 { background: #f5eddf; }
+
+        /* REFERÊNCIAS */
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            color: var(--cinza);
+            margin-bottom: 12px;
+        }
+
+        li a {
+            color: var(--dourado);
+        }
+
+        .aviso {
+            margin-top: 25px;
+            padding: 20px;
+            border: 1px dashed var(--borda);
+            font-size: 14px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            padding: 45px 20px;
+            text-align: center;
+            background: #0b0b09;
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--dourado);
+            text-decoration: none;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 650px) {
+            nav {
+                gap: 10px 15px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            header {
+                min-height: 75vh;
+            }
+
+            .grade {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .citacao {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CAPA DO SITE -->
+
+    <header id="inicio">
+        <div class="capa">
+
+            <div class="etiqueta">
+                Literatura Brasileira • Parnasianismo
+            </div>
+
+            <h1>Francisca Júlia</h1>
+
+            <p class="subtitulo">
+                Além da estética: a arte dos versos, a busca pela perfeição
+                formal e a presença de uma mulher na literatura brasileira.
+            </p>
+
+            <a href="#autora" class="botao">
+                EXPLORAR TRABALHO ↓
+            </a>
+
+        </div>
+    </header>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+
+    <nav>
+        <a href="#autora">A autora</a>
+        <a href="#contexto">Contexto</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#obra">Obra</a>
+        <a href="#analise">Análise crítica</a>
+        <a href="#visual">Elementos visuais</a>
+        <a href="#referencias">Referências</a>
+    </nav>
+
+    <main>
+
+        <!-- 1. QUEM FOI A AUTORA -->
+
+        <section id="autora">
+
+            <div class="numero">01 — A AUTORA</div>
+
+            <h2>Uma voz importante do Parnasianismo</h2>
+
+            <p class="destaque">
+                Francisca Júlia da Silva (1871–1920) foi uma poetisa
+                brasileira reconhecida pelo cuidado com a linguagem
+                e pela construção formal de seus poemas.
+            </p>
+
+            <div class="retrato-container">
+
+                <img
+                    class="retrato"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Francisca_J%C3%BAlia.jpg/330px-Francisca_J%C3%BAlia.jpg"
+                    alt="Retrato de Francisca Júlia"
+                    onerror="this.style.display='none'; document.getElementById('erro-imagem').style.display='block';"
+                >
+
+                <p id="erro-imagem" class="aviso" style="display:none">
+                    A imagem não carregou. Procure um retrato de Francisca
+                    Júlia em uma fonte confiável e substitua o endereço no HTML.
+                </p>
+
+                <p class="legenda">
+                    Retrato da autora. Consulte a fonte original da imagem.
+                </p>
+
+            </div>
+
+            <p>
+                Nascida em Xiririca, atual Eldorado, no estado de São Paulo,
+                Francisca Júlia conquistou espaço no cenário literário
+                brasileiro. Sua produção está associada ao Parnasianismo,
+                movimento que valorizava a forma, a precisão das palavras
+                e o trabalho cuidadoso com os versos.
+            </p>
+
+        </section>
+
+        <!-- 2. CONTEXTO HISTÓRICO -->
+
+        <section id="contexto">
+
+            <div class="numero">02 — CONTEXTO HISTÓRICO</div>
+
+            <h2>Escrever em uma época de desafios</h2>
+
+            <p>
+                Francisca Júlia viveu entre o final do século XIX e o início
+                do século XX. Naquele período, as mulheres enfrentavam
+                barreiras sociais para conquistar reconhecimento em diversas
+                áreas, inclusive na literatura.
+            </p>
+
+            <p>
+                Mesmo nesse contexto, a autora publicou seus textos e
+                construiu uma trajetória respeitada. Sua história permite
+                compreender tanto a literatura de sua época quanto as
+                dificuldades enfrentadas pelas mulheres para participar
+                da vida cultural.
+            </p>
+
+        </section>
+
+        <!-- 3. CARACTERÍSTICAS LITERÁRIAS -->
+
+        <section id="caracteristicas">
+
+            <div class="numero">03 — ESTILO LITERÁRIO</div>
+
+            <h2>A construção cuidadosa do poema</h2>
+
+            <div class="grade">
+
+                <div class="cartao">
+                    <h3>Forma e ritmo</h3>
+                    <p>
+                        A organização dos versos, a métrica e as rimas têm
+                        grande importância na estética parnasiana. O poema
+                        é construído com atenção à estrutura.
+                    </p>
+                </div>
+
+                <div class="cartao">
+                    <h3>Precisão das palavras</h3>
+                    <p>
+                        A escolha do vocabulário é cuidadosa. A linguagem
+                        busca expressividade e um efeito artístico
+                        construído com rigor.
+                    </p>
+                </div>
+
+                <div class="cartao">
+                    <h3>Imagens poéticas</h3>
+                    <p>
+                        Descrições e imagens podem criar cenas marcantes,
+                        como se o leitor observasse uma obra de arte
+                        construída com palavras.
+                    </p>
+                </div>
+
+                <div class="cartao">
+                    <h3>Arte e sociedade</h3>
+                    <p>
+                        Sua trajetória também permite refletir sobre a
+                        presença feminina e o reconhecimento das mulheres
+                        na literatura brasileira.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 4. OBRA EM DESTAQUE -->
+
+        <section id="obra">
+
+            <div class="numero">04 — OBRA EM DESTAQUE</div>
+
+            <h2><em>Musa Impassível</em></h2>
+
+            <p>
+                <em>Musa Impassível</em> é um dos poemas mais conhecidos
+                de Francisca Júlia. A obra permite observar características
+                associadas ao Parnasianismo, como o cuidado formal e a
+                construção artística da linguagem.
+            </p>
+
+            <p>
+                O título sugere uma musa serena e distante, relacionada
+                a um ideal de controle e perfeição artística. Durante a
+                leitura, vale observar o vocabulário, a organização dos
+                versos, o ritmo e as imagens construídas pela autora.
+            </p>
+
+            <div class="citacao">
+                A forma não é apenas decoração: ela também participa
+                da maneira como o poema produz sentido.
+            </div>
+
+            <div class="aviso">
+                <strong>Trecho do poema:</strong>
+                acrescente aqui um fragmento original de
+                <em>Musa Impassível</em>, consultado em uma edição confiável.
+                Logo abaixo, informe o nome do livro ou o endereço da fonte
+                exata utilizada.
+            </div>
+
+        </section>
+
+        <!-- 5. ANÁLISE CRÍTICA -->
+
+        <section id="analise">
+
+            <div class="numero">05 — ALÉM DA ESTÉTICA</div>
+
+            <h2>Por que sua história também importa?</h2>
+
+            <p>
+                Francisca Júlia não deve ser lembrada somente pelo domínio
+                técnico da poesia. Sua trajetória também permite discutir
+                as dificuldades enfrentadas pelas mulheres para conquistar
+                reconhecimento no ambiente literário de sua época.
+            </p>
+
+            <p>
+                Ao estudar a autora, percebemos que a literatura é formada
+                tanto por escolhas artísticas quanto pelos contextos sociais
+                em que as obras são produzidas. Também é importante perguntar
+                quais escritores recebem maior destaque e quais acabam
+                recebendo menos atenção.
+            </p>
+
+            <p class="destaque">
+                Sua contribuição vai além da forma dos versos: sua trajetória
+                ajuda a ampliar a compreensão sobre a participação feminina
+                na cultura brasileira.
+            </p>
+
+        </section>
+
+        <!-- 6. ELEMENTOS MULTISSEMIÓTICOS -->
+
+        <section id="visual">
+
+            <div class="numero">06 — ELEMENTOS MULTISSEMIÓTICOS</div>
+
+            <h2>O visual também comunica</h2>
+
+            <p>
+                Além dos textos, o site utiliza cores, imagens, tipografia
+                e organização visual para transmitir informações e reforçar
+                o tema do trabalho.
+            </p>
+
+            <div class="grade">
+
+                <div class="cartao">
+                    <h3>As cores</h3>
+                    <p>
+                        O dourado destaca os títulos e transmite elegância.
+                        O preto cria contraste e sobriedade, enquanto o
+                        bege facilita a leitura dos textos.
+                    </p>
+
+                    <div class="paleta">
+                        <div class="cor cor1" title="Dourado"></div>
+                        <div class="cor cor2" title="Preto"></div>
+                        <div class="cor cor3" title="Bege claro"></div>
+                    </div>
+                </div>
+
+                <div class="cartao">
+                    <h3>A tipografia</h3>
+                    <p>
+                        Os títulos grandes destacam as informações principais.
+                        As fontes serifadas remetem aos livros e à tradição
+                        da literatura clássica.
+                    </p>
+                </div>
+
+                <div class="cartao">
+                    <h3>A imagem</h3>
+                    <p>
+                        O retrato aproxima o público da figura histórica
+                        estudada. A imagem deve ter identificação e uma
+                        fonte confiável.
+                    </p>
+                </div>
+
+                <div class="cartao">
+                    <h3>A organização</h3>
+                    <p>
+                        As seções e os cartões separam os assuntos e facilitam
+                        a navegação. Esses recursos visuais complementam
+                        o conteúdo escrito.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 7. CONCLUSÃO -->
+
+        <section id="conclusao">
+
+            <div class="numero">07 — CONCLUSÃO</div>
+
+            <h2>Uma leitura mais completa</h2>
+
+            <p>
+                Francisca Júlia foi uma importante representante do
+                Parnasianismo brasileiro. Sua poesia demonstra atenção
+                à forma, ao ritmo e à escolha das palavras.
+            </p>
+
+            <p>
+                Entretanto, estudar sua trajetória também permite refletir
+                sobre o reconhecimento das mulheres na literatura. Conhecer
+                sua obra é olhar além da estética, valorizando tanto a
+                produção artística quanto o contexto histórico em que
+                ela foi criada.
+            </p>
+
+        </section>
+
+        <!-- 8. REFERÊNCIAS -->
+
+        <section id="referencias">
+
+            <div class="numero">08 — REFERÊNCIAS</div>
+
+            <h2>Fontes de pesquisa</h2>
+
+            <ul>
+                <li>
+                    <a href="https://enciclopedia.itaucultural.org.br/"
+                       target="_blank" rel="noopener noreferrer">
+                        Enciclopédia Itaú Cultural
+                    </a>
+                    — consulte informações sobre a autora e a literatura brasileira.
+                </li>
+
+                <li>
+                    <a href="https://www.academia.org.br/"
+                       target="_blank" rel="noopener noreferrer">
+                        Academia Brasileira de Letras
+                    </a>
+                    — consulte materiais sobre escritores brasileiros.
+                </li>
+
+                <li>
+                    JÚLIA, Francisca. <em>Musa Impassível</em>.
+                    Informe a edição ou a fonte exata em que o poema foi consultado.
+                </li>
+
+                <li>
+                    Imagem da autora: informe a fonte específica do retrato utilizado.
+                </li>
+            </ul>
+
+            <div class="aviso">
+                Antes de entregar, acrescente o fragmento original do poema
+                com a fonte exata e complete seu nome, turma e data, caso
+                a professora solicite.
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <p>Trabalho de Língua Portuguesa e Literatura</p>
+
+        <p>Professora Ana Laura</p>
+
+        <p>Parnasianismo Brasileiro — Francisca Júlia</p>
+
+        <a href="#inicio">Voltar ao início ↑</a>
+
+    </footer>
+
+</body>
+</html>
+```
